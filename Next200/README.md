@@ -235,6 +235,18 @@ Next200/
 
 ![H1 강력편입 수익률 분석](images/11.png)
 
+### 기간별 strong_in / strong_out 수익률 비교
+
+`2020_H2 ~ 2025_H2` 구간에서 `strong_in`, `strong_out`, 그리고 KOSPI200 벤치마크의 평균 수익률을 비교했습니다.
+
+![기간별 strong_in / strong_out / 벤치마크 수익률](images/strong_inout_return.png)
+
+### 기간별 strong_in / strong_out 정밀도 분석
+
+기간별로 `precision`과 함께 `예측 수 / 실제 수 / 적중 수`를 비교해 모델이 실제 편입·편출 종목을 얼마나 정확히 포착했는지 확인했습니다.
+
+![기간별 strong_in / strong_out precision](images/strong_inout_precision.png)
+
 | 구분 | 평균 수익률 |
 |-----|-----------|
 | 강력편입 전체 | **+12.8%** |
