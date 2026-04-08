@@ -1,0 +1,73 @@
+Next200_v1.5 실행 가이드 -. PowerShell
+
+1. 처음 실행하는 사람
+
+Next200_v1.5 폴더로 이동
+cd <프로젝트_폴더>\Next200_v1.5
+
+가상환경 생성
+python -m venv .venv
+
+필요 패키지 설치
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+.env 준비
+프로젝트에서 사용하는 환경변수와 키를 설정합니다.
+예:
+ADMIN_DIAGNOSTICS_KEY=원하는키값
+
+주간 데이터 수집
+.\.venv\Scripts\python.exe run_weekly_collection.py
+
+주간 예측 실행
+.\.venv\Scripts\python.exe run_weekly_prediction.py --as-of 2026-04-07
+
+Streamlit 실행
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+앱에서 확인할 것
+- 2026_H1 선택
+- 편입 예측 / 편출 예측 확인
+- 필요하면 관리자 진단 키 입력
+
+
+2. 이후 다시 실행하는 사람
+
+Next200_v1.5 폴더로 이동
+cd <프로젝트_폴더>\Next200_v1.5
+
+주간 데이터 수집
+.\.venv\Scripts\python.exe run_weekly_collection.py
+
+주간 예측 실행
+.\.venv\Scripts\python.exe run_weekly_prediction.py --as-of 2026-04-07
+
+Streamlit 실행
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+
+3. 한 번에 복사해서 실행할 명령어
+
+처음 실행(패키지 설치 포함)
+
+cd <프로젝트_폴더>\Next200_v1.5
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe run_weekly_collection.py
+.\.venv\Scripts\python.exe run_weekly_prediction.py --as-of 2026-04-07
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+
+이후 실행
+
+cd <프로젝트_폴더>\Next200_v1.5
+.\.venv\Scripts\python.exe run_weekly_collection.py
+.\.venv\Scripts\python.exe run_weekly_prediction.py --as-of 2026-04-07
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+
+4. 참고
+
+- PowerShell에서 Activate.ps1 실행은 정책 때문에 막힐 수 있습니다.
+- 그래서 이 프로젝트는 가상환경 activate 대신 .\.venv\Scripts\python.exe를 직접 호출하는 방식으로 실행하는 것을 권장합니다.
+- weekly_run.ps1을 사용할 수도 있지만, 가장 안정적인 실행 방식은 위의 python 직접 호출 방식입니다.

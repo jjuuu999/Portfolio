@@ -1,0 +1,26 @@
+Next200 실행 가이드
+
+# 1. 폴더 이동
+cd C:\Users\Admin\Desktop\Project\Next200
+
+# 2. 가상환경 생성
+python -m venv .venv
+
+# 3. 실행 정책 허용
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+# 4. 가상환경 활성화
+.\.venv\Scripts\Activate.ps1
+
+# 5. 패키지 설치
+pip install -r requirements.txt
+
+# 6. 앱 실행
+.\.venv\Scripts\python.exe -m streamlit run app.py --server.port 8501
+
+# 이미 실행한 적 있으면 한번에
+cd C:\Users\Admin\Desktop\Project\Next200
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\python.exe -m streamlit run app.py --server.port 8501
