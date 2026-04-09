@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
-from xgboost import XGBClassifier
+from sklearn.ensemble import ExtraTreesClassifier
 
 from src.config import load_config
 from src.eligibility import apply_eligibility_filter
@@ -16,17 +16,17 @@ V15_FEATURES = [
     "prev_was_member",
     "period_rank",
     "dist_from_200",
-    "float_dist_from_200",
-    "float_rate",
     "float_mktcap_rank",
-    "rank_change",
     "sector_relative_rank",
-    "non_float_ratio",
+    "float_dist_from_200",
     "sector_rank",
+    "avg_mktcap",
+    "rank_change",
+    "last_foreign_ratio",
+    "float_rate",
+    "non_float_ratio",
     "major_holder_ratio",
-    "avg_exhaustion_rate",
     "avg_foreign_ratio",
-    "foreign_change",
 ]
 
 
@@ -261,22 +261,18 @@ def build_v15_package() -> Path:
     X_train = train_df[V15_FEATURES].apply(pd.to_numeric, errors="coerce").fillna(0.0)
     y_train = train_df["is_member"].astype(int)
 
-    model = XGBClassifier(
+    model = ExtraTreesClassifier(
         n_estimators=300,
-        learning_rate=0.05,
-        max_depth=6,
-        subsample=0.9,
-        colsample_bytree=0.9,
-        objective="binary:logistic",
-        eval_metric="logloss",
         random_state=42,
+        class_weight="balanced",
+        n_jobs=1,
     )
     model.fit(X_train, y_train)
 
     v15_package = dict(base_package)
     v15_package["model"] = model
-    v15_package["model_name"] = "XGBoost"
-    v15_package["method"] = "XGBoost 14 features"
+    v15_package["model_name"] = "ExtraTrees"
+    v15_package["method"] = "ExtraTrees 14 features"
     v15_package["model_version"] = "v1.5"
     v15_package["features"] = list(V15_FEATURES)
     v15_package["created_at"] = datetime.now().isoformat(timespec="seconds")
