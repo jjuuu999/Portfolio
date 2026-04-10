@@ -1,9 +1,4 @@
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=jjuuu999&theme=default&hide_border=true" height="150"/>
-</p>
-
-
 ---
 
 ## 🚀 Projects
