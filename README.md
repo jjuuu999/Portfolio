@@ -1,8 +1,8 @@
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=jjuuu999&show_icons=true&theme=default&hide_border=true" height="150"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jjuuu999&layout=compact&theme=default&hide_border=true" height="150"/>
+  <img src="https://streak-stats.demolab.com?user=jjuuu999&theme=default&hide_border=true" height="150"/>
 </p>
+
 
 ---
 
